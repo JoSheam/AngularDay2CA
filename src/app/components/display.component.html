@@ -1,10 +1,26 @@
-<p>
-  display works!
-</p>
-<div class="container">
-    <ng-container>
-      <h2>{{data.main.temp}}</h2>
-    </ng-container>
-      
+<div *ngIf="showdata" align="center">
+    <div class="row">
+        <h2>{{data?.name}}</h2>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div *ngFor="let weather of data.weather">
+                <img src="http://openweathermap.org/img/w/{{weather.icon}}.png">
+                <h6>{{weather.main}}: {{weather.description}}</h6>
+            </div>
+        </div>
+        <div class="col">
+            <h4>{{data?.main.temp}}</h4>
+            <h6>{{data?.main.temp_min}} | {{data?.main.temp_max}}</h6>
+            <h6>Current Pressure: {{data?.main.pressure}}</h6>
+            <h6>Current Humidity: {{data?.main.humidity}}</h6>
+        </div>
+    </div>
 </div>
 
+<div *ngIf="showerror" align="center">
+    <div class="row">
+        <h2>{{emsg}}</h2>
+    </div>
+</div>

@@ -19,10 +19,7 @@ export class SearchComponent implements OnInit {
 
   process(){
     const query = this.queryForm.value.query;
-
-    console.log('processing: ', query);
-
-    this.weatherService.showWeatherData(query);
+    this.weatherService.getWeatherData(query);
   }
 
 }

@@ -9,13 +9,31 @@ import { WeatherService } from '../service/weather.service';
 })
 export class DisplayComponent implements OnInit {
 
-  private data : any = {} ;
-  private weatherServiceSub : Subscription;
-  constructor(private weatherService : WeatherService) { };
+  private data: any;
+  private error: any;
+  private weatherServiceSub: Subscription;
+  private showdata: boolean;
+  private showerror: boolean;
+  private emsg : any;
 
-  ngOnInit() { 
-    this.weatherServiceSub = this.weatherService.serviceEmitter.subscribe((data) => {
-      this.data = data
-    });   
+  constructor(private weatherService: WeatherService) { };
+
+  ngOnInit() {
+    this.weatherServiceSub = this.weatherService.serviceEmitter.subscribe
+    (
+      (data) => {
+        this.data = data;
+        console.log(this.data);
+        this.showdata=false;
+        this.showerror=false;
+        if(this.data.status == null){
+          this.showdata=true;
+        }
+        else {
+          this.showerror=true;
+          this.emsg = this.data._body;
+        }
+      }
+    );
   }
 }

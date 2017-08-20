@@ -1,12 +1,16 @@
 
   <form novalidate (ngSubmit)="process()" #queryForm="ngForm"> 
     
-      <div class="form-group">
-        <label for="query">Enter Country</label>
-        <input type="text" name="query" id="query" class="form-control" size="50"
+      <div class="form-group" align ="center">
+              <label for="query">Enter Country</label>
+        
+              <input type="text" name="query" id="query" class="form-control" size="50"
         required #queryField="ngModel"
-        ngModel>
-        <button class="btn btn-default" type="submit">
+        ngModel> <br/>
+        <p class="text-danger" *ngIf="!queryField.valid">
+            Please enter a query text
+          </p>    
+        <button class="btn btn-primary" type="submit" [disabled]="!queryForm.valid">
           Search
         </button>
       </div>
