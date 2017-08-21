@@ -5,10 +5,10 @@
               <label for="query">Enter Country</label>
         
               <input type="text" name="query" id="query" class="form-control" size="50"
-        required #queryField="ngModel"
+              pattern="[a-zA-Z,\' ]{1,50}" required #queryField="ngModel"
         ngModel> <br/>
         <p class="text-danger" *ngIf="!queryField.valid">
-            Please enter a query text
+            Please enter valid country or city
           </p>    
         <button class="btn btn-primary" type="submit" [disabled]="!queryForm.valid">
           Search
