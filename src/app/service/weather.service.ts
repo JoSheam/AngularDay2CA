@@ -21,7 +21,8 @@ export class WeatherService {
       params: 
       {
         q: country,
-        appid: this.APPID
+        appid: this.APPID,
+        units: "metric",
       }
     }
   )
@@ -29,12 +30,10 @@ export class WeatherService {
   .subscribe(
     (data) => 
     {
-      console.log(data);
       this.serviceEmitter.emit(data);
     },
     (err) =>
     {
-      console.log(err);
       this.serviceEmitter.emit(err);
     }
   );

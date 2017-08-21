@@ -23,7 +23,6 @@ export class DisplayComponent implements OnInit {
     (
       (data) => {
         this.data = data;
-        console.log(this.data);
         this.showdata=false;
         this.showerror=false;
         if(this.data.status == null){
@@ -31,7 +30,9 @@ export class DisplayComponent implements OnInit {
         }
         else {
           this.showerror=true;
-          this.emsg = this.data._body;
+          if (this.data.status === 404) {
+            this.emsg = "City Not Found";
+          }
         }
       }
     );
